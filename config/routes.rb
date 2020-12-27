@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
-  resources :tickets
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :tickets do
+    resources :comments, only: %i[new create]
+  end
+
+  root to: 'tickets#index'
 end
